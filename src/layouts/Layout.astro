@@ -13,7 +13,7 @@ const { title, description = 'PyCon 2025 - Annual Python Conference' } = Astro.p
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <title>{title}</title>
+    <title>{title} | PyCon 2025</title>
     <style is:global>
       * {
         margin: 0;
@@ -21,282 +21,207 @@ const { title, description = 'PyCon 2025 - Annual Python Conference' } = Astro.p
         box-sizing: border-box;
       }
 
+      :root {
+        --primary-color: #3776ab;
+        --secondary-color: #ffd43b;
+        --text-dark: #1a1a1a;
+        --text-light: #666666;
+        --bg-light: #f8f9fa;
+        --border-color: #e0e0e0;
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 1rem;
+        --spacing-md: 1.5rem;
+        --spacing-lg: 2rem;
+        --spacing-xl: 3rem;
+      }
+
       html {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         scroll-behavior: smooth;
       }
 
       body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        color: var(--text-dark);
         background-color: #ffffff;
-        color: #1a1a1a;
         line-height: 1.6;
       }
 
       a {
-        color: #3776ab;
+        color: var(--primary-color);
         text-decoration: none;
         transition: color 0.3s ease;
       }
 
       a:hover {
-        color: #2c5aa0;
+        color: var(--secondary-color);
       }
 
       button {
+        font-family: inherit;
         cursor: pointer;
         border: none;
-        font-family: inherit;
+        border-radius: 0.375rem;
         transition: all 0.3s ease;
       }
 
-      /* Header & Navigation */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-md);
+      }
+
       header {
-        background-color: #ffffff;
-        border-bottom: 1px solid #e0e0e0;
+        background-color: var(--primary-color);
+        color: white;
+        padding: var(--spacing-md) 0;
         position: sticky;
         top: 0;
         z-index: 100;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
 
-      nav {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 1rem 2rem;
+      header nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
       }
 
-      .logo {
+      header .logo {
         font-size: 1.5rem;
-        font-weight: 700;
-        color: #3776ab;
+        font-weight: bold;
+        color: white;
       }
 
-      .nav-links {
-        display: flex;
-        gap: 2rem;
+      header .logo a {
+        color: white;
+      }
+
+      header .logo a:hover {
+        color: var(--secondary-color);
+      }
+
+      header nav ul {
         list-style: none;
-      }
-
-      .nav-links a {
-        font-weight: 500;
-        color: #1a1a1a;
-      }
-
-      .nav-links a:hover {
-        color: #3776ab;
-      }
-
-      /* Main Content */
-      main {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-      }
-
-      /* Hero Section */
-      .hero {
-        position: relative;
-        min-height: 500px;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, #3776ab 0%, #2c5aa0 100%);
-        color: #ffffff;
-        text-align: center;
-        overflow: hidden;
-        margin-bottom: 3rem;
+        gap: var(--spacing-lg);
+        flex-wrap: wrap;
       }
 
-      .hero-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0.3;
-        z-index: 0;
+      header nav a {
+        color: white;
+        font-weight: 500;
       }
 
-      .hero-content {
-        position: relative;
-        z-index: 1;
-        max-width: 800px;
-        padding: 2rem;
+      header nav a:hover {
+        color: var(--secondary-color);
       }
 
-      .hero h1 {
-        font-size: 3.5rem;
-        margin-bottom: 1rem;
-        font-weight: 800;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-      }
-
-      .hero p {
-        font-size: 1.25rem;
-        margin-bottom: 2rem;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-      }
-
-      .cta-button {
-        display: inline-block;
-        background-color: #ffd43b;
-        color: #1a1a1a;
-        padding: 0.75rem 2rem;
-        border-radius: 0.5rem;
-        font-weight: 600;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-      }
-
-      .cta-button:hover {
-        background-color: #ffed4e;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      }
-
-      /* Section Styles */
-      section {
-        margin-bottom: 4rem;
-      }
-
-      section h2 {
-        font-size: 2.5rem;
-        margin-bottom: 1.5rem;
-        color: #1a1a1a;
-        border-bottom: 3px solid #3776ab;
-        padding-bottom: 0.5rem;
-        display: inline-block;
-      }
-
-      section p {
-        font-size: 1.1rem;
-        margin-bottom: 1rem;
-        color: #333333;
-      }
-
-      /* Grid Layouts */
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
-      }
-
-      .card {
-        background-color: #f8f9fa;
-        border: 1px solid #e0e0e0;
-        border-radius: 0.5rem;
-        padding: 2rem;
-        transition: all 0.3s ease;
-      }
-
-      .card:hover {
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        transform: translateY(-4px);
-      }
-
-      .card h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        color: #3776ab;
-      }
-
-      .card p {
-        color: #555555;
-        margin-bottom: 1rem;
-      }
-
-      /* Footer */
       footer {
-        background-color: #1a1a1a;
-        color: #ffffff;
-        padding: 2rem;
-        text-align: center;
-        margin-top: 4rem;
+        background-color: var(--text-dark);
+        color: white;
+        padding: var(--spacing-xl) var(--spacing-md);
+        margin-top: var(--spacing-xl);
       }
 
-      footer p {
-        color: #cccccc;
+      footer .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+      }
+
+      footer h3 {
+        margin-bottom: var(--spacing-md);
+        color: var(--secondary-color);
       }
 
       footer a {
-        color: #ffd43b;
+        color: #cccccc;
       }
 
       footer a:hover {
-        color: #ffed4e;
+        color: var(--secondary-color);
       }
 
-      /* Responsive Design */
+      footer ul {
+        list-style: none;
+      }
+
+      footer li {
+        margin-bottom: var(--spacing-sm);
+      }
+
+      footer .footer-bottom {
+        border-top: 1px solid var(--border-color);
+        padding-top: var(--spacing-lg);
+        text-align: center;
+        color: #999999;
+      }
+
       @media (max-width: 768px) {
-        .hero h1 {
-          font-size: 2.5rem;
+        header nav ul {
+          gap: var(--spacing-md);
         }
 
-        .hero p {
-          font-size: 1rem;
-        }
-
-        .nav-links {
-          gap: 1rem;
-          font-size: 0.9rem;
-        }
-
-        nav {
-          padding: 1rem;
-        }
-
-        section h2 {
-          font-size: 2rem;
-        }
-
-        main {
-          padding: 0 1rem;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .hero {
-          min-height: 350px;
-        }
-
-        .hero h1 {
-          font-size: 2rem;
-        }
-
-        .nav-links {
+        header nav ul {
           flex-direction: column;
-          gap: 0.5rem;
-        }
-
-        section h2 {
-          font-size: 1.5rem;
+          gap: var(--spacing-sm);
         }
       }
     </style>
   </head>
   <body>
     <header>
-      <nav>
-        <div class="logo">PyCon 2025</div>
-        <ul class="nav-links">
-          <li><a href="/pycon-2025/">Home</a></li>
-          <li><a href="/pycon-2025/#about">About</a></li>
-          <li><a href="/pycon-2025/#schedule">Schedule</a></li>
-          <li><a href="/pycon-2025/#venue">Venue</a></li>
-          <li><a href="/pycon-2025/#register">Register</a></li>
-        </ul>
-      </nav>
+      <div class="container">
+        <nav>
+          <div class="logo">
+            <a href="/pycon-2025/">🐍 PyCon 2025</a>
+          </div>
+          <ul>
+            <li><a href="/pycon-2025/">Home</a></li>
+            <li><a href="/pycon-2025/#about">About</a></li>
+            <li><a href="/pycon-2025/#schedule">Schedule</a></li>
+            <li><a href="/pycon-2025/#venue">Venue</a></li>
+            <li><a href="/pycon-2025/#register">Register</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
+
     <main>
       <slot />
     </main>
+
     <footer>
-      <p>&copy; 2025 PyCon. All rights reserved.</p>
-      <p><a href="https://github.com/runbook-projects/pycon-2025">GitHub Repository</a></p>
+      <div class="container">
+        <div class="footer-content">
+          <div>
+            <h3>About PyCon 2025</h3>
+            <p>The annual Python conference bringing together developers, data scientists, and enthusiasts from around the world.</p>
+          </div>
+          <div>
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="/pycon-2025/">Home</a></li>
+              <li><a href="/pycon-2025/#schedule">Schedule</a></li>
+              <li><a href="/pycon-2025/#venue">Venue</a></li>
+              <li><a href="/pycon-2025/#register">Register</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Connect</h3>
+            <ul>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">Discord</a></li>
+              <li><a href="#">Email</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 PyCon. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

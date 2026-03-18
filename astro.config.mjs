@@ -5,6 +5,6 @@ export default defineConfig({
   base: '/pycon-2025',
   output: 'static',
   build: {
-    assets: 'assets'
-  }
+    assets: 'assets',
+  },
 });

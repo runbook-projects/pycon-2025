@@ -2,117 +2,437 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="PyCon 2025 - Annual Python Conference" description="Join us for PyCon 2025, the annual Python conference bringing together developers, data scientists, and enthusiasts for talks, workshops, and networking.">
-  <!-- Hero Section -->
+<Layout title="Home" description="PyCon 2025 - Annual Python Conference">
+  <style>
+    .hero {
+      background: linear-gradient(135deg, #3776ab 0%, #2d5f8d 100%);
+      color: white;
+      padding: 6rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('/pycon-2025/assets/event-image-1.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background-color: #ffd43b;
+      color: #3776ab;
+    }
+
+    .btn-primary:hover {
+      background-color: #ffe873;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .btn-secondary:hover {
+      background-color: white;
+      color: #3776ab;
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 4rem 0;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #3776ab;
+      text-align: center;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #3776ab;
+    }
+
+    .about-text p {
+      margin-bottom: 1rem;
+      color: #666666;
+      line-height: 1.8;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: #f8f9fa;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      border-left: 4px solid #ffd43b;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: #3776ab;
+    }
+
+    .feature-card p {
+      color: #666666;
+    }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .schedule-item {
+      background: white;
+      border: 1px solid #e0e0e0;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .schedule-item:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-color: #ffd43b;
+    }
+
+    .schedule-item .time {
+      color: #ffd43b;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .schedule-item h3 {
+      color: #3776ab;
+      margin-bottom: 0.5rem;
+    }
+
+    .schedule-item p {
+      color: #666666;
+      font-size: 0.95rem;
+    }
+
+    .venue-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .venue-map {
+      background: #f0f0f0;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      text-align: center;
+      color: #999999;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .venue-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #3776ab;
+    }
+
+    .venue-info p {
+      margin-bottom: 1rem;
+      color: #666666;
+      line-height: 1.8;
+    }
+
+    .register-section {
+      background: linear-gradient(135deg, #3776ab 0%, #2d5f8d 100%);
+      color: white;
+      text-align: center;
+      padding: 4rem 2rem;
+      border-radius: 0.5rem;
+    }
+
+    .register-section h2 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .register-section p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .register-form {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 0.375rem;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: 2px solid #ffd43b;
+      outline-offset: 2px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #ffd43b;
+      color: #3776ab;
+      font-weight: 600;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #ffe873;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .about-content,
+      .venue-content {
+        grid-template-columns: 1fr;
+      }
+
+      section h2 {
+        font-size: 2rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+
   <section class="hero">
-    <img src="/pycon-2025/assets/event-image-1.png" alt="PyCon 2025 Event Banner" class="hero-image" />
-    <div class="hero-content">
-      <h1>PyCon 2025</h1>
-      <p>The Premier Annual Python Conference</p>
-      <p>Bringing together developers, data scientists, and enthusiasts for talks, workshops, and networking.</p>
-      <a href="#register" class="cta-button">Register Now</a>
+    <div class="container">
+      <div class="hero-content">
+        <h1>PyCon 2025</h1>
+        <p>The Annual Python Conference</p>
+        <p>Bringing together developers, data scientists, and enthusiasts for talks, workshops, and networking.</p>
+        <div class="cta-buttons">
+          <a href="#register" class="btn btn-primary">Register Now</a>
+          <a href="#schedule" class="btn btn-secondary">View Schedule</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about">
+  <section id="about" class="container">
     <h2>About PyCon 2025</h2>
-    <p>
-      PyCon 2025 is the premier annual conference for the Python community. Whether you're a seasoned developer, a data scientist exploring new frontiers, or an enthusiast eager to learn, PyCon brings together the brightest minds in the Python ecosystem.
-    </p>
-    <p>
-      Our conference features world-class talks from industry leaders, hands-on workshops covering cutting-edge topics, and unparalleled networking opportunities with fellow Python enthusiasts from around the globe.
-    </p>
-    <div class="grid">
-      <div class="card">
-        <h3>Expert Talks</h3>
-        <p>Learn from industry leaders and core Python developers sharing insights on the latest trends, best practices, and innovations in the Python ecosystem.</p>
+    <div class="about-content">
+      <div class="about-text">
+        <h3>Join the Python Community</h3>
+        <p>PyCon 2025 is the premier annual conference for the Python programming community. Whether you're a seasoned developer, data scientist, or just starting your Python journey, PyCon offers something for everyone.</p>
+        <p>Attend keynote presentations from industry leaders, participate in hands-on workshops, and network with thousands of Python enthusiasts from around the world.</p>
+        <p>Learn about the latest trends in Python development, artificial intelligence, data science, web development, and more.</p>
       </div>
-      <div class="card">
-        <h3>Hands-On Workshops</h3>
-        <p>Participate in interactive workshops covering topics from web development and data science to machine learning and DevOps.</p>
-      </div>
-      <div class="card">
-        <h3>Networking</h3>
-        <p>Connect with thousands of Python developers, data scientists, and enthusiasts. Build relationships that can shape your career.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Schedule Section -->
-  <section id="schedule">
-    <h2>Schedule</h2>
-    <p>PyCon 2025 runs for three days packed with keynotes, talks, workshops, and social events.</p>
-    <div class="grid">
-      <div class="card">
-        <h3>Day 1: Keynotes & Opening</h3>
-        <p><strong>Date:</strong> May 16, 2025</p>
-        <p>Join us for opening remarks and inspiring keynote presentations from Python community leaders. Meet fellow attendees at the welcome reception.</p>
-      </div>
-      <div class="card">
-        <h3>Day 2: Talks & Workshops</h3>
-        <p><strong>Date:</strong> May 17, 2025</p>
-        <p>Dive deep into parallel tracks of technical talks and hands-on workshops. Choose from topics spanning web development, data science, DevOps, and more.</p>
-      </div>
-      <div class="card">
-        <h3>Day 3: Advanced Topics & Closing</h3>
-        <p><strong>Date:</strong> May 18, 2025</p>
-        <p>Explore advanced topics, attend lightning talks, and join us for the closing ceremony and networking dinner.</p>
+      <div class="features">
+        <div class="feature-card">
+          <h3>🎤 Keynotes</h3>
+          <p>Inspiring talks from industry leaders and Python core developers.</p>
+        </div>
+        <div class="feature-card">
+          <h3>🛠️ Workshops</h3>
+          <p>Hands-on learning sessions covering various Python topics and frameworks.</p>
+        </div>
+        <div class="feature-card">
+          <h3>🤝 Networking</h3>
+          <p>Connect with thousands of Python developers and enthusiasts.</p>
+        </div>
+        <div class="feature-card">
+          <h3>💡 Innovation</h3>
+          <p>Discover cutting-edge projects and emerging technologies in the Python ecosystem.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Venue Section -->
-  <section id="venue">
-    <h2>Venue</h2>
-    <p>
-      PyCon 2025 will be held at the Convention Center in Portland, Oregon, a world-class venue with state-of-the-art facilities designed to host our growing community.
-    </p>
-    <div class="grid">
-      <div class="card">
-        <h3>Location</h3>
-        <p><strong>Portland Convention Center</strong></p>
-        <p>777 NE Martin Luther King Jr. Blvd<br />Portland, OR 97232<br />United States</p>
+  <section id="schedule" class="container" style="background-color: #f8f9fa; padding: 4rem 0; margin: 0 -1.5rem; padding-left: 1.5rem; padding-right: 1.5rem;">
+    <h2>Conference Schedule</h2>
+    <div class="schedule-grid">
+      <div class="schedule-item">
+        <div class="time">Day 1 - Morning</div>
+        <h3>Opening Keynote</h3>
+        <p>Join us for an inspiring opening keynote from a Python core developer discussing the future of the language.</p>
       </div>
-      <div class="card">
-        <h3>Accessibility</h3>
-        <p>The venue is fully accessible with wheelchair access, accessible restrooms, and accommodations for attendees with disabilities. ASL interpretation and live captioning will be provided.</p>
+      <div class="schedule-item">
+        <div class="time">Day 1 - Afternoon</div>
+        <h3>Parallel Tracks</h3>
+        <p>Choose from multiple concurrent sessions covering web development, data science, DevOps, and more.</p>
       </div>
-      <div class="card">
-        <h3>Getting There</h3>
-        <p>Conveniently located near public transportation. Free parking available for registered attendees. Shuttle service from major hotels.</p>
+      <div class="schedule-item">
+        <div class="time">Day 2 - Morning</div>
+        <h3>Workshop Sessions</h3>
+        <p>Hands-on workshops led by experts. Topics include FastAPI, Machine Learning, and Cloud Development.</p>
+      </div>
+      <div class="schedule-item">
+        <div class="time">Day 2 - Afternoon</div>
+        <h3>Lightning Talks</h3>
+        <p>Quick 5-minute presentations from community members sharing their projects and insights.</p>
+      </div>
+      <div class="schedule-item">
+        <div class="time">Day 3 - Morning</div>
+        <h3>Advanced Topics</h3>
+        <p>Deep-dive sessions on performance optimization, async programming, and advanced Python patterns.</p>
+      </div>
+      <div class="schedule-item">
+        <div class="time">Day 3 - Afternoon</div>
+        <h3>Closing Ceremony</h3>
+        <p>Wrap-up with community announcements, awards, and networking reception.</p>
       </div>
     </div>
   </section>
 
-  <!-- Register Section -->
-  <section id="register">
-    <h2>Register</h2>
-    <p>
-      Secure your spot at PyCon 2025 today! Early bird tickets are available at a special rate until April 30, 2025.
-    </p>
-    <div class="grid">
-      <div class="card">
-        <h3>Early Bird</h3>
-        <p><strong>$199</strong></p>
-        <p>Available until April 30, 2025</p>
-        <p>Includes all three days of talks, workshops, meals, and networking events.</p>
-        <button class="cta-button" onclick="alert('Registration coming soon!')" style="width: 100%; margin-top: 1rem;">Register Early Bird</button>
+  <section id="venue" class="container">
+    <h2>Venue & Location</h2>
+    <div class="venue-content">
+      <div class="venue-map">
+        <p>📍 Interactive Map Coming Soon</p>
       </div>
-      <div class="card">
-        <h3>Regular</h3>
-        <p><strong>$299</strong></p>
-        <p>Available May 1 - May 15, 2025</p>
-        <p>Includes all three days of talks, workshops, meals, and networking events.</p>
-        <button class="cta-button" onclick="alert('Registration coming soon!')" style="width: 100%; margin-top: 1rem;">Register</button>
+      <div class="venue-info">
+        <h3>Conference Location</h3>
+        <p><strong>Convention Center</strong></p>
+        <p>123 Tech Boulevard<br />San Francisco, CA 94105<br />United States</p>
+        <p>The venue is easily accessible by public transportation and offers ample parking for attendees. Nearby hotels and restaurants are available for your convenience.</p>
+        <p><strong>Accessibility:</strong> The venue is fully wheelchair accessible with accessible restrooms and parking available.</p>
       </div>
-      <div class="card">
-        <h3>Student</h3>
-        <p><strong>$99</strong></p>
-        <p>Valid student ID required</p>
-        <p>Includes all three days of talks, workshops, meals, and networking events.</p>
-        <button class="cta-button" onclick="alert('Registration coming soon!')" style="width: 100%; margin-top: 1rem;">Register as Student</button>
-      </div>
+    </div>
+  </section>
+
+  <section id="register" class="container">
+    <div class="register-section">
+      <h2>Register for PyCon 2025</h2>
+      <p>Secure your spot at the premier Python conference. Early bird tickets are available now!</p>
+      <form class="register-form" aria-label="Registration form">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required aria-required="true" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required aria-required="true" />
+        </div>
+        <div class="form-group">
+          <label for="ticket">Ticket Type</label>
+          <select id="ticket" name="ticket" required aria-required="true">
+            <option value="">Select a ticket type</option>
+            <option value="early-bird">Early Bird - $199</option>
+            <option value="standard">Standard - $299</option>
+            <option value="vip">VIP - $499</option>
+            <option value="student">Student - $99</option>
+          </select>
+        </div>
+        <button type="submit" class="submit-btn">Complete Registration</button>
+      </form>
     </div>
   </section>
 </Layout>
