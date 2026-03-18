@@ -1,0 +1,86 @@
+---
+const basePath = import.meta.env.BASE_URL || '/';
+---
+
+<header class="header">
+  <div class="container">
+    <nav class="nav">
+      <a href={basePath} class="logo">PyCon 2025</a>
+      <ul class="nav-links">
+        <li><a href={`${basePath}#about`}>About</a></li>
+        <li><a href={`${basePath}#schedule`}>Schedule</a></li>
+        <li><a href={`${basePath}#venue`}>Venue</a></li>
+        <li><a href={`${basePath}#register`}>Register</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0066cc;
+    text-decoration: none;
+  }
+
+  .logo:hover {
+    text-decoration: none;
+    color: #0052a3;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: #0066cc;
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .nav {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .nav-links {
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+    }
+  }
+</style>
