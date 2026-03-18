@@ -1,15 +1,19 @@
 {
   "name": "pycon-2025",
-  "version": "1.0.0",
-  "description": "PyCon 2025 - The annual Python programming conference",
   "type": "module",
+  "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview"
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
     "astro": "^4.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@astrojs/check": "^0.3.0",
+    "typescript": "^5.3.0"
+  }
 }
