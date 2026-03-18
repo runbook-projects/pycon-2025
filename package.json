@@ -1,7 +1,7 @@
 {
   "name": "pycon-2025",
   "version": "1.0.0",
-  "description": "PyCon 2025 - Annual Python conference bringing together developers from around the world.",
+  "description": "PyCon 2025 - The annual Python programming conference",
   "type": "module",
   "scripts": {
     "dev": "astro dev",
