@@ -7,14 +7,13 @@ interface Props {
 const { title, description = 'PyCon 2025 - Annual Python Conference' } = Astro.props;
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <title>{title} | PyCon 2025</title>
-    <link rel="icon" type="image/svg+xml" href="/pycon-2025/favicon.svg" />
+    <title>{title}</title>
     <style is:global>
       * {
         margin: 0;
@@ -22,204 +21,282 @@ const { title, description = 'PyCon 2025 - Annual Python Conference' } = Astro.p
         box-sizing: border-box;
       }
 
-      :root {
-        --color-primary: #3776ab;
-        --color-secondary: #ffd43b;
-        --color-dark: #1a1a1a;
-        --color-light: #f5f5f5;
-        --color-text: #333;
-        --color-border: #ddd;
-        --spacing-xs: 0.5rem;
-        --spacing-sm: 1rem;
-        --spacing-md: 1.5rem;
-        --spacing-lg: 2rem;
-        --spacing-xl: 3rem;
-        --spacing-2xl: 4rem;
-        --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-        --font-mono: 'Courier New', monospace;
-      }
-
       html {
-        font-family: var(--font-sans);
-        background-color: #fff;
-        color: var(--color-text);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        scroll-behavior: smooth;
       }
 
       body {
+        background-color: #ffffff;
+        color: #1a1a1a;
         line-height: 1.6;
       }
 
       a {
-        color: var(--color-primary);
+        color: #3776ab;
         text-decoration: none;
-        transition: color 0.2s ease;
+        transition: color 0.3s ease;
       }
 
       a:hover {
-        color: var(--color-secondary);
-        text-decoration: underline;
+        color: #2c5aa0;
       }
 
-      h1, h2, h3, h4, h5, h6 {
-        line-height: 1.2;
-        margin-bottom: var(--spacing-md);
-        color: var(--color-dark);
-      }
-
-      h1 {
-        font-size: 2.5rem;
-      }
-
-      h2 {
-        font-size: 2rem;
-      }
-
-      h3 {
-        font-size: 1.5rem;
-      }
-
-      p {
-        margin-bottom: var(--spacing-md);
-      }
-
-      button, .btn {
-        display: inline-block;
-        padding: var(--spacing-sm) var(--spacing-lg);
-        background-color: var(--color-primary);
-        color: white;
-        border: none;
-        border-radius: 4px;
-        font-size: 1rem;
+      button {
         cursor: pointer;
-        transition: background-color 0.2s ease;
-        text-decoration: none;
+        border: none;
+        font-family: inherit;
+        transition: all 0.3s ease;
       }
 
-      button:hover, .btn:hover {
-        background-color: #2c5aa0;
-      }
-
-      .btn-secondary {
-        background-color: var(--color-secondary);
-        color: var(--color-dark);
-      }
-
-      .btn-secondary:hover {
-        background-color: #f0c930;
-      }
-    </style>
-  </head>
-  <body>
-    <header class="header">
-      <nav class="navbar">
-        <div class="container">
-          <div class="nav-brand">
-            <a href="/pycon-2025/">PyCon 2025</a>
-          </div>
-          <ul class="nav-menu">
-            <li><a href="/pycon-2025/">Home</a></li>
-            <li><a href="/pycon-2025/#about">About</a></li>
-            <li><a href="/pycon-2025/#schedule">Schedule</a></li>
-            <li><a href="/pycon-2025/#venue">Venue</a></li>
-            <li><a href="/pycon-2025/#register">Register</a></li>
-          </ul>
-        </div>
-      </nav>
-    </header>
-
-    <main>
-      <slot />
-    </main>
-
-    <footer class="footer">
-      <div class="container">
-        <p>&copy; 2025 PyCon. All rights reserved.</p>
-        <p>Annual Python conference bringing together developers, data scientists, and enthusiasts.</p>
-      </div>
-    </footer>
-
-    <style>
-      .header {
-        background-color: var(--color-primary);
-        color: white;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      /* Header & Navigation */
+      header {
+        background-color: #ffffff;
+        border-bottom: 1px solid #e0e0e0;
         position: sticky;
         top: 0;
         z-index: 100;
       }
 
-      .navbar {
-        padding: var(--spacing-md) 0;
-      }
-
-      .navbar .container {
+      nav {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
       }
 
-      .nav-brand a {
+      .logo {
         font-size: 1.5rem;
-        font-weight: bold;
-        color: white;
+        font-weight: 700;
+        color: #3776ab;
       }
 
-      .nav-brand a:hover {
-        color: var(--color-secondary);
-        text-decoration: none;
-      }
-
-      .nav-menu {
+      .nav-links {
         display: flex;
+        gap: 2rem;
         list-style: none;
-        gap: var(--spacing-lg);
       }
 
-      .nav-menu a {
-        color: white;
+      .nav-links a {
+        font-weight: 500;
+        color: #1a1a1a;
       }
 
-      .nav-menu a:hover {
-        color: var(--color-secondary);
-        text-decoration: none;
+      .nav-links a:hover {
+        color: #3776ab;
       }
 
+      /* Main Content */
       main {
-        min-height: calc(100vh - 200px);
-      }
-
-      .footer {
-        background-color: var(--color-dark);
-        color: white;
-        padding: var(--spacing-2xl) 0;
-        margin-top: var(--spacing-2xl);
-        text-align: center;
-      }
-
-      .footer p {
-        margin-bottom: var(--spacing-sm);
-      }
-
-      .container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0 var(--spacing-lg);
+        padding: 0 2rem;
       }
 
+      /* Hero Section */
+      .hero {
+        position: relative;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #3776ab 0%, #2c5aa0 100%);
+        color: #ffffff;
+        text-align: center;
+        overflow: hidden;
+        margin-bottom: 3rem;
+      }
+
+      .hero-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.3;
+        z-index: 0;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        padding: 2rem;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        font-weight: 800;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      }
+
+      .cta-button {
+        display: inline-block;
+        background-color: #ffd43b;
+        color: #1a1a1a;
+        padding: 0.75rem 2rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .cta-button:hover {
+        background-color: #ffed4e;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Section Styles */
+      section {
+        margin-bottom: 4rem;
+      }
+
+      section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: #1a1a1a;
+        border-bottom: 3px solid #3776ab;
+        padding-bottom: 0.5rem;
+        display: inline-block;
+      }
+
+      section p {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        color: #333333;
+      }
+
+      /* Grid Layouts */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .card {
+        background-color: #f8f9fa;
+        border: 1px solid #e0e0e0;
+        border-radius: 0.5rem;
+        padding: 2rem;
+        transition: all 0.3s ease;
+      }
+
+      .card:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transform: translateY(-4px);
+      }
+
+      .card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #3776ab;
+      }
+
+      .card p {
+        color: #555555;
+        margin-bottom: 1rem;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #1a1a1a;
+        color: #ffffff;
+        padding: 2rem;
+        text-align: center;
+        margin-top: 4rem;
+      }
+
+      footer p {
+        color: #cccccc;
+      }
+
+      footer a {
+        color: #ffd43b;
+      }
+
+      footer a:hover {
+        color: #ffed4e;
+      }
+
+      /* Responsive Design */
       @media (max-width: 768px) {
-        .nav-menu {
-          flex-direction: column;
-          gap: var(--spacing-md);
+        .hero h1 {
+          font-size: 2.5rem;
         }
 
-        h1 {
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .nav-links {
+          gap: 1rem;
+          font-size: 0.9rem;
+        }
+
+        nav {
+          padding: 1rem;
+        }
+
+        section h2 {
           font-size: 2rem;
         }
 
-        h2 {
+        main {
+          padding: 0 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero {
+          min-height: 350px;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .nav-links {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        section h2 {
           font-size: 1.5rem;
         }
       }
     </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">PyCon 2025</div>
+        <ul class="nav-links">
+          <li><a href="/pycon-2025/">Home</a></li>
+          <li><a href="/pycon-2025/#about">About</a></li>
+          <li><a href="/pycon-2025/#schedule">Schedule</a></li>
+          <li><a href="/pycon-2025/#venue">Venue</a></li>
+          <li><a href="/pycon-2025/#register">Register</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <p>&copy; 2025 PyCon. All rights reserved.</p>
+      <p><a href="https://github.com/runbook-projects/pycon-2025">GitHub Repository</a></p>
+    </footer>
   </body>
 </html>
