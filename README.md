@@ -1,21 +1,11 @@
-# PyCon 2025 Event Page
+# PyCon 2025
 
-A modern, responsive static event page for PyCon 2025 built with Astro.
+The annual Python programming conference website built with Astro.
 
-## Features
-
-- ✨ Fast, static site generation with Astro
-- 📱 Fully responsive design
-- ♿ Semantic HTML and accessibility best practices
-- 🎨 Modern, clean design with inline CSS
-- 🚀 Optimized for GitHub Pages deployment
-- 🔗 Proper base path handling for GitHub Pages
-
-## Getting Started
+## Quick Start
 
 ### Prerequisites
-
-- Node.js 16+ and npm
+- Node.js 18+ and npm
 
 ### Installation
 
@@ -29,7 +19,7 @@ npm install
 npm run dev
 ```
 
-The site will be available at `http://localhost:3000`.
+The site will be available at `http://localhost:3000/pycon-2025/`
 
 ### Build
 
@@ -37,7 +27,7 @@ The site will be available at `http://localhost:3000`.
 npm run build
 ```
 
-The static site will be generated in the `dist/` directory.
+This generates a static site in the `dist/` directory ready for deployment to GitHub Pages.
 
 ### Preview
 
@@ -47,22 +37,45 @@ npm run preview
 
 ## Deployment
 
-This site is configured for deployment to GitHub Pages at:
+This site is configured to deploy to GitHub Pages at:
+```
 https://runbook-projects.github.io/pycon-2025
-
-The `astro.config.mjs` is pre-configured with the correct `site` and `base` paths.
+```
 
 ## Project Structure
 
 ```
-src/
-├── components/       # Reusable Astro components
-├── layouts/         # Layout templates
-└── pages/           # Page routes
-public/
-└── assets/          # Static assets
+├── src/
+│   ├── layouts/
+│   │   └── Layout.astro       # Main layout component
+│   └── pages/
+│       └── index.astro        # Home page
+├── public/
+│   ├── assets/
+│   │   └── event-image-1.png  # Hero banner image
+│   └── favicon.svg            # Site favicon
+├── astro.config.mjs           # Astro configuration
+├── package.json               # Project dependencies
+└── README.md                  # This file
 ```
+
+## Features
+
+- ✨ Static site generation with Astro
+- 📱 Fully responsive design
+- ♿ Semantic HTML and accessibility
+- 🎨 Modern CSS with custom properties
+- 🚀 Optimized for GitHub Pages
+- 📦 Zero external dependencies
+
+## Sections
+
+- **Hero**: Eye-catching event banner with call-to-action
+- **About**: Overview of conference benefits
+- **Schedule**: Three-day event highlights
+- **Venue**: Location and logistics information
+- **Register**: Ticket options and pricing
 
 ## License
 
-MIT
+Copyright © 2025 PyCon. All rights reserved.
